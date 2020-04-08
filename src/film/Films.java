@@ -5,92 +5,92 @@ import java.io.PrintWriter;
 import java.util.Arrays;
 
 /**
- * Ensemble de méthodes de classe utilitaires pour la projection (sur System.in)
- * et la sauvegarde (dans un fichier) d'un film. Le format de fichier employé
+ * Ensemble de mÃ©thodes de classe utilitaires pour la projection (sur System.in)
+ * et la sauvegarde (dans un fichier) d'un film. Le format de fichier employÃ©
  * pour la sauvegarde est compatible avec le player graphique.
  */
 public class Films {
 	/**
-	 * Projette un film dans sa totalité sur System.in. Attention, la méthode ne
+	 * Projette un film dans sa totalitÃ© sur System.in. Attention, la mÃ©thode ne
 	 * se termine pas si le film est infini.
-	 * 
+	 *
 	 * @param f
-	 *            Le film devant être projeté.
+	 *            Le film devant Ãªtre projetÃ©.
 	 */
 	public static void projeter(Film f) {
-		char[][] écran = getEcran(f);
-		while (f.suivante(écran)) {
-			System.out.println(toString(écran));
+		char[][] Ã©cran = getEcran(f);
+		while (f.suivante(Ã©cran)) {
+			System.out.println(toString(Ã©cran));
 			pause(1. / 12);
-			effacer(écran);
+			effacer(Ã©cran);
 		}
 	}
 
 	/**
 	 * Sauvegarder un film dans un fichier.
-	 * 
+	 *
 	 * @param f
-	 *            Le film à sauvegarder.
+	 *            Le film Ã  sauvegarder.
 	 * @param nom
-	 *            le nom du fichier où sauvegarder le film.
+	 *            le nom du fichier oÃ¹ sauvegarder le film.
 	 * @throws FileNotFoundException
-	 *             Si le nom du fichier ne permet pas de le créer.
+	 *             Si le nom du fichier ne permet pas de le crÃ©er.
 	 */
 	public static void sauvegarder(Film f, String nom) throws FileNotFoundException {
 		try (PrintWriter out = new PrintWriter(nom)) {
-			char[][] écran = getEcran(f);
+			char[][] Ã©cran = getEcran(f);
 			out.println(f.largeur() + " " + f.hauteur());
-			while (f.suivante(écran)) {
-				out.println(toString(écran));
+			while (f.suivante(Ã©cran)) {
+				out.println(toString(Ã©cran));
 				out.println("\\newframe");
-				effacer(écran);
+				effacer(Ã©cran);
 			}
 		}
 	}
 
 	/**
-	 * Construit un écran adapté à la projection d'un film.
-	 * 
+	 * Construit un Ã©cran adaptÃ© Ã  la projection d'un film.
+	 *
 	 * @param f
-	 *            Le film pour lequel un écran doit être constuit.
-	 * @return L'écran adapté au film.
+	 *            Le film pour lequel un Ã©cran doit Ãªtre constuit.
+	 * @return L'Ã©cran adaptÃ© au film.
 	 */
 	public static char[][] getEcran(Film f) {
-		char[][] écran = new char[f.hauteur()][f.largeur()];
-		effacer(écran);
-		return écran;
+		char[][] Ã©cran = new char[f.hauteur()][f.largeur()];
+		effacer(Ã©cran);
+		return Ã©cran;
 	}
 
 	/**
-	 * Efface un écran.
-	 * 
-	 * @param écran
-	 *            L'écran à effacer
+	 * Efface un Ã©cran.
+	 *
+	 * @param Ã©cran
+	 *            L'Ã©cran Ã  effacer
 	 */
-	public static void effacer(char[][] écran) {
-		for (char[] ligne : écran)
+	public static void effacer(char[][] Ã©cran) {
+		for (char[] ligne : Ã©cran)
 			Arrays.fill(ligne, ' ');
 	}
 
 	/**
-	 * Convertit en chaine de caractère un écran.
-	 * 
-	 * @param écran
-	 *            L'écran à convertir
-	 * @return La chaine correspondante à l'écran.
+	 * Convertit en chaine de caractÃ¨re un Ã©cran.
+	 *
+	 * @param Ã©cran
+	 *            L'Ã©cran Ã  convertir
+	 * @return La chaine correspondante Ã  l'Ã©cran.
 	 */
-	public static String toString(char[][] écran) {
+	public static String toString(char[][] Ã©cran) {
 		StringBuilder s = new StringBuilder();
-		for (char[] ligne : écran)
+		for (char[] ligne : Ã©cran)
 			s.append(new String(ligne) + System.lineSeparator());
 		return s.toString();
 	}
 
 	/**
-	 * Endort le programme pendant un temps donné.
-	 * 
+	 * Endort le programme pendant un temps donnÃ©.
+	 *
 	 * @param d
-	 *            Le temps d'endormissement exprimé en seconde.
+	 *            Le temps d'endormissement exprimÃ© en seconde.
 	 */
 	public static void pause(double d) {
 		try {
@@ -100,10 +100,10 @@ public class Films {
 		}
 	}
 
-	// Cette classe n'a pas vocation à être instanciée car elle ne contient que
-	// des méthodes de classe (i.e. statiques).
-	// Introduire un constructeur privé interdit toute instanciation (en dehors
-	// de la classe elle même).
+	// Cette classe n'a pas vocation Ã  Ãªtre instanciÃ©e car elle ne contient que
+	// des mÃ©thodes de classe (i.e. statiques).
+	// Introduire un constructeur privÃ© interdit toute instanciation (en dehors
+	// de la classe elle mÃªme).
 	private Films() {
 	}
 }

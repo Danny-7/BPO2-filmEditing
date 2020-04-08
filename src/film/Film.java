@@ -1,43 +1,43 @@
 package film;
 
 /**
- * Interface devant être respectée par tout film.
- * 
- * Attention, pour qu'un film puisse être projeté ou sauvergardé (voir la classe
- * film.Outils), il doit être composé d'un nombre fini d'images. En conséquence,
- * la méthode suivante() doit nécessairement retourner false au bout d'un nombre
+ * Interface devant Ãªtre respectÃ©e par tout film.
+ *
+ * Attention, pour qu'un film puisse Ãªtre projetÃ© ou sauvergardÃ© (voir la classe
+ * film.Outils), il doit Ãªtre composÃ© d'un nombre fini d'images. En consÃ©quence,
+ * la mÃ©thode suivante() doit nÃ©cessairement retourner false au bout d'un nombre
  * fini d'appels.
  */
 public interface Film {
 	/**
-	 * Indique la hauteur des images de ce film (en nombre de caractères).
-	 * 
-	 * @return Hauteur minimale de l'écran pour pouvoir afficher les images de
+	 * Indique la hauteur des images de ce film (en nombre de caractÃ¨res).
+	 *
+	 * @return Hauteur minimale de l'Ã©cran pour pouvoir afficher les images de
 	 *         ce film.
 	 */
 	int hauteur();
 
 	/**
-	 * Indique la largeur des images de ce film (en nombre de caractères).
-	 * 
-	 * @return largeur minimale de l'écran pour pouvoir afficher les images de
+	 * Indique la largeur des images de ce film (en nombre de caractÃ¨res).
+	 *
+	 * @return largeur minimale de l'Ã©cran pour pouvoir afficher les images de
 	 *         ce film.
 	 */
 	int largeur();
 
 	/**
 	 * Obtenir l'image suivante (s'il y en a une).
-	 * 
-	 * @param écran
-	 *            L'écran où afficher l'image
-	 * @return vrai Si l'image suivante a été affichée sur l'écran et faux si le
-	 *         film est terminé
+	 *
+	 * @param Ã©cran
+	 *            L'Ã©cran oÃ¹ afficher l'image
+	 * @return vrai Si l'image suivante a Ã©tÃ© affichÃ©e sur l'Ã©cran et faux si le
+	 *         film est terminÃ©
 	 */
-	boolean suivante(char[][] écran);
+	boolean suivante(char[][] Ã©cran);
 
 	/**
-	 * Rembobine le film en permettant de rejouer le film dans sa totalité (via
-	 * des appels successifs à la méthode suivante()).
+	 * Rembobine le film en permettant de rejouer le film dans sa totalitÃ© (via
+	 * des appels successifs Ã  la mÃ©thode suivante()).
 	 */
 	void rembobiner();
 }

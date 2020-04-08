@@ -6,7 +6,7 @@ import film.Film;
 import film.Films;
 
 /**
- * Un exemple basique d'implémentation de l'interface Film.
+ * Un exemple basique d'implÃ©mentation de l'interface Film.
  */
 public class LaDiagonaleDuFou implements Film {
 	private int num = 0;
@@ -19,15 +19,15 @@ public class LaDiagonaleDuFou implements Film {
 
 	@Override
 	public int largeur() {
-		return hauteur(); // ce sera un carré
+		return hauteur(); // ce sera un carrÃ©
 	}
 
 	@Override
-	public boolean suivante(char[][] écran) {
+	public boolean suivante(char[][] Ã©cran) {
 		if (num == NB_IMAGES)
 			return false;
-		écran[num % hauteur()][num % hauteur()] = 'a'; // un 'a' se balade sur
-														// la diagonale
+		Ã©cran[num % hauteur()][num % hauteur()] = 'a'; // un 'a' se balade sur
+		// la diagonale
 		++num;
 		return true;
 	}
@@ -43,11 +43,11 @@ public class LaDiagonaleDuFou implements Film {
 	public static void main(String[] args) {
 		Film film = new LaDiagonaleDuFou();
 		Films.projeter(film);
-		film.rembobiner(); 
+		film.rembobiner();
 		try {
 			Films.sauvegarder(film, "fou.txt");
 		} catch (FileNotFoundException e) {
-			System.err.println("Le fichier 'fou.txt' n'a pas pu être créé.");
+			System.err.println("Le fichier 'fou.txt' n'a pas pu Ãªtre crÃ©Ã©.");
 		}
 	}
 }
