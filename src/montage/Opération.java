@@ -60,4 +60,8 @@ public class Opération {
          return sb.toString();
     }
 
+    /**
+     * Créer une méthode permettant de projeter un film en entier projeter(ArrayList ecran)
+     */
+
 }
