@@ -3,7 +3,7 @@ package exemple;
 import java.io.FileNotFoundException;
 
 import film.Film;
-import film.Films;
+import montage.FilmRépéter;
 
 /**
  * Un exemple basique d'implémentation de l'interface Film.
@@ -40,14 +40,25 @@ public class LaDiagonaleDuFou implements Film {
 	/**
 	 * La projection (puis la sauvegarde) d'un tel film.
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		Film film = new LaDiagonaleDuFou();
-		Films.projeter(film);
+		/**Films.projeter(film);
 		film.rembobiner();
 		try {
 			Films.sauvegarder(film, "fou.txt");
 		} catch (FileNotFoundException e) {
 			System.err.println("Le fichier 'fou.txt' n'a pas pu être créé.");
+		}*/
+
+		FilmRépéter filmRep = new FilmRépéter(film,20);
+		filmRep.projeter(film);
+		filmRep.rembobiner();
+		try{
+			filmRep.sauvegarder(film,"fou.txt");
+		}catch( FileNotFoundException e){
+			System.err.println("Le fichier n'a pas pu être créé !");
 		}
+
+
 	}
 }
