@@ -1,9 +1,14 @@
 package exemple;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import film.Film;
-import montage.FilmRépéter;
+import film.Films;
+import montage.Répéter;
+import montage.NewFilm;
+import montage.Répéter;
+
 
 /**
  * Un exemple basique d'implémentation de l'interface Film.
@@ -41,23 +46,28 @@ public class LaDiagonaleDuFou implements Film {
 	 * La projection (puis la sauvegarde) d'un tel film.
 	 */
 	public static void main(String[] args) throws FileNotFoundException {
-		Film film = new LaDiagonaleDuFou();
-		/**Films.projeter(film);
-		film.rembobiner();
-		try {
+//		Film film = new LaDiagonaleDuFou();
+		Film f = new NewFilm();
+		try{
+			NewFilm.createFilm("./vidéothèque/decompte.txt");
+		}catch(IOException e){
+			System.out.println(e.getMessage());
+		}
+
+		Films.projeter(f);
+		f.rembobiner();
+		/*try {
 			Films.sauvegarder(film, "fou.txt");
 		} catch (FileNotFoundException e) {
 			System.err.println("Le fichier 'fou.txt' n'a pas pu être créé.");
-		}*/
+		}*
 
-		FilmRépéter filmRep = new FilmRépéter(film,20);
-		filmRep.projeter(film);
-		filmRep.rembobiner();
+		/*Répéter.projeter(film,5);
 		try{
-			filmRep.sauvegarder(film,"fou.txt");
+			Répéter.sauvegarder(film,5,"fou.txt");
 		}catch( FileNotFoundException e){
 			System.err.println("Le fichier n'a pas pu être créé !");
-		}
+		}*/
 
 
 	}
