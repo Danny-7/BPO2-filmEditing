@@ -1,8 +1,6 @@
 package montage;
 
 import film.Film;
-import film.Films;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -12,12 +10,13 @@ import java.util.Scanner;
 
 import static film.Films.effacer;
 
+
 public class NewFilm implements Film {
     private String path;
     private static int height;
     private static int width;
 
-    private static List<char[][]> films = new ArrayList<char[][]>();
+    private static List<char[][]> frames = new ArrayList<char[][]>();
     private static int num = 0;
 
     public NewFilm() {
@@ -29,9 +28,9 @@ public class NewFilm implements Film {
         String line = data.nextLine();
         width = Integer.parseInt(line.split(" ")[0]);
         height = Integer.parseInt(line.split(" ")[1]);
+        char[][] film = new char[height][width];
         while (lineCount - 1 > 0) {
             int i = 0;
-            char[][] film = new char[height][width];
             effacer(film);
             String charSequence = "";
             while (!charSequence.startsWith("\\new") && data.hasNextLine()) {
@@ -42,7 +41,7 @@ public class NewFilm implements Film {
                     ++i;
                 }
             }
-            films.add(film);
+            frames.add(film);
         }
     }
 
@@ -58,17 +57,9 @@ public class NewFilm implements Film {
 
     @Override
     public boolean suivante(char[][] écran) {
-        if (num == films.size())
-            return false;
-        else {
-            // Renvoie une image d'un film
-            écran = films.remove(num);
-            ++num;
-            return true;
-        }
+        écran = frames.remove(0); // retourne une frame du film
+       return !frames.isEmpty();
     }
-
-
 
     @Override
     public void rembobiner() {
