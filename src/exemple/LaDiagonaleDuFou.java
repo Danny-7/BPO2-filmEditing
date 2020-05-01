@@ -6,7 +6,6 @@ import java.io.IOException;
 import film.Film;
 import film.Films;
 import montage.Movie;
-import montage.NewFilm;
 
 /**
  * Un exemple basique d'implémentation de l'interface Film.
@@ -44,22 +43,17 @@ public class LaDiagonaleDuFou implements Film {
      * La projection (puis la sauvegarde) d'un tel film.
      */
     public static void main(String[] args) {
+
         Film film = new Movie(new LaDiagonaleDuFou());
 
         Films.projeter(film);
         film.rembobiner();
-        /*try {
+        try {
             Films.sauvegarder(film, "fou.txt");
         } catch (FileNotFoundException e) {
             System.err.println("Le fichier 'fou.txt' n'a pas pu être créé.");
         }
-        /*Film film = new NewFilm();
-        try {
-            NewFilm.createFilm("vidéothèque/decompte.txt");
-        } catch (IOException e) {
-            e.getMessage();
-        }
-        Films.projeter(film);*/
+
 
     }
 }
