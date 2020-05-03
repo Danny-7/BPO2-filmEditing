@@ -3,15 +3,18 @@ package montage;
 import film.Film;
 import film.Films;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Movie implements Film {
     private List<Frame> movie;
     private Film f;
     private static int num = 0;
 
+    /**
+     * Permet de créer un film structuré à partir d'un film existant
+     *
+     * @param f Le film qu'on veut structurer
+     */
     public Movie(Film f){
         this.f = f;
         movie = new LinkedList<>();
@@ -33,8 +36,32 @@ public class Movie implements Film {
         return f.largeur();
     }
 
+    /**
+     * Permet de changer la liste de notre film
+     *
+     * @param list La liste qu'on veut set
+     */
+    public void setMovie(List<Frame> list){
+        movie = list;
+    }
+
+    /**
+     * Permet d'obtenir un itérateur de notre liste
+     *
+     * @return Un itérateur de movie
+     */
+    public Iterator<Frame> iterator(){
+        return movie.iterator();
+    }
+
+    /**
+     * Permet de créer une image du film
+     *
+     * @param frame l'écran qui nous est donné
+     * @return l'écran correspondant à l'image selectionnée
+     */
     private char[][] createFrame(char[][] frame){
-        char [][] temp =  movie.get(num).getFrame();
+        char [][] temp =  movie.listIterator(num).next().getFrame();
         for(int i = 0; i< temp.length; ++i) {
             for (int j = 0; j < temp[0].length; ++j) {
                 frame[i][j] = temp[i][j];
@@ -44,7 +71,7 @@ public class Movie implements Film {
     }
 
     /**
-     *
+     *  Vérifie s'il y'a encore une image disponible
      * @param écran
      *            L'écran où afficher l'image
      * @return Vrai si 'image suivante a été affiché sinon faux
@@ -62,7 +89,7 @@ public class Movie implements Film {
 
     @Override
     public void rembobiner() {
-        f.rembobiner();
+        num =0;
     }
 
 }
@@ -70,13 +97,20 @@ public class Movie implements Film {
 class Frame{
     private char[][] frame;
 
+    /**
+     * Permet de créer une image
+     *
+     * @param frameTemp écran donné
+     */
     public Frame(char[][] frameTemp){
         frame = new char[frameTemp.length][frameTemp[0].length];
+        // retourne une nouvelle image depuis un écran
         frame = Arrays.stream(frameTemp).map(char[]::clone).toArray(char[][]::new);
     }
 
     /**
-     * Modifie l'image actuelle du film
+     * Modifie l'image actuelle
+     *
      * @param frameTemp
      */
     public void setFrame(char[][] frameTemp){
@@ -85,7 +119,8 @@ class Frame{
 
     /**
      * Retourne une image
-     * @return
+     *
+     * @return une image
      */
     public char[][] getFrame(){
         return this.frame;
