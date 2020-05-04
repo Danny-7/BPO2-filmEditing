@@ -8,6 +8,7 @@ import film.Films;
 import montage.FrameMovie;
 import montage.Movie;
 import montage.MovieTrailer;
+import montage.PasteTwoFilm;
 
 /**
  * Un exemple basique d'implémentation de l'interface Film.
@@ -41,19 +42,21 @@ public class LaDiagonaleDuFou implements Film {
         num = 0;
     }
 
+
     /**
      * La projection (puis la sauvegarde) d'un tel film.
      */
     public static void main(String[] args) {
 
         Film film = new Movie(new LaDiagonaleDuFou());
+        Film filmTest = new Movie(new Ligne());
 //        Films.projeter(film);
 
-        Film framed = FrameMovie.frameAMovie(film);
-        Films.projeter(framed);
-        framed.rembobiner();
+        Film pasteTwoFilm = PasteTwoFilm.paste(film, filmTest);
+        Films.projeter(pasteTwoFilm);
+        pasteTwoFilm.rembobiner();
         try {
-            Films.sauvegarder(framed, "fou.txt");
+            Films.sauvegarder(pasteTwoFilm, "test.txt");
 //            Films.sauvegarder(trailer, "fou.txt");
         } catch (FileNotFoundException e) {
             System.err.println("Le fichier 'fou.txt' n'a pas pu être créé.");
