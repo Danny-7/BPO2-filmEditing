@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import film.Film;
 import film.Films;
+import montage.FrameMovie;
 import montage.Movie;
 import montage.MovieTrailer;
 
@@ -46,10 +47,12 @@ public class LaDiagonaleDuFou implements Film {
     public static void main(String[] args) {
 
         Film film = new Movie(new LaDiagonaleDuFou());
-        Films.projeter(film);
+//        Films.projeter(film);
 //        Film trailer = MovieTrailer.trailer(film,5,10);
 //        Films.projeter(trailer);
 //        trailer.rembobiner();
+        Film framed = FrameMovie.frameAMovie(film);
+        Films.projeter(framed);
         film.rembobiner();
         try {
             Films.sauvegarder(film, "fou.txt");
