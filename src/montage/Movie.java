@@ -4,6 +4,7 @@ import film.Film;
 import film.Films;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -31,6 +32,19 @@ public class Movie implements Film {
     @Override
     public int largeur() {
         return f.largeur();
+    }
+
+    public void setMovie(List<Frame> list){
+        movie = list;
+    }
+
+    /**
+     * Permet d'obtenir un itérateur de notre liste
+     *
+     * @return Un itérateur de movie
+     */
+    public Iterator<Frame> iterator(){
+        return movie.iterator();
     }
 
     private char[][] createFrame(char[][] frame){
