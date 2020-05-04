@@ -50,8 +50,8 @@ public class Movie implements Film {
      *
      * @return Un itérateur de movie
      */
-    public Iterator<Frame> iterator(){
-        return movie.iterator();
+    public ListIterator<Frame> listIterator(){
+        return movie.listIterator();
     }
 
     /**

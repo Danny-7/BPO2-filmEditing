@@ -5,6 +5,7 @@ import film.Film;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 
 public class RepeatFilm {
 
@@ -22,12 +23,12 @@ public class RepeatFilm {
         Movie temp = new Movie(f);
         List<Frame> movieReapeated = new LinkedList<>();
         // Création d'un itérateur de notre film
-        Iterator<Frame> originalMovie = temp.iterator();
+        ListIterator<Frame> originalMovie = temp.listIterator();
         for(int i = 0; i< nbRep; ++i){
             while(originalMovie.hasNext()){
                 movieReapeated.add(originalMovie.next());
             }
-            originalMovie = temp.iterator();
+            originalMovie = temp.listIterator();
         }
         // On switch de list pour notre film répété
         temp.setMovie(movieReapeated);
