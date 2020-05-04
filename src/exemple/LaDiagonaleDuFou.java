@@ -48,14 +48,12 @@ public class LaDiagonaleDuFou implements Film {
 
         Film film = new Movie(new LaDiagonaleDuFou());
 //        Films.projeter(film);
-//        Film trailer = MovieTrailer.trailer(film,5,10);
-//        Films.projeter(trailer);
-//        trailer.rembobiner();
+
         Film framed = FrameMovie.frameAMovie(film);
         Films.projeter(framed);
-        film.rembobiner();
+        framed.rembobiner();
         try {
-            Films.sauvegarder(film, "fou.txt");
+            Films.sauvegarder(framed, "fou.txt");
 //            Films.sauvegarder(trailer, "fou.txt");
         } catch (FileNotFoundException e) {
             System.err.println("Le fichier 'fou.txt' n'a pas pu être créé.");

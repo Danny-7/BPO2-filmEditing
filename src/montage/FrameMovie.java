@@ -7,44 +7,52 @@ import java.util.List;
 import java.util.ListIterator;
 
 public class FrameMovie {
+    private final static int SPC_STARS = 2;
+    private FrameMovie(){}
 
+    /**
+     *  Permet d'obtenir une image encadré
+     *
+     * @param f Le film donné
+     * @param e L'image à encadré
+     * @return une image encadré
+     */
     private static Frame getFrame(Film f, Frame e){
-        char[][] framedScreen = new char[f.hauteur()+2][f.largeur()+2];
+        char[][] framedScreen = new char[f.hauteur()+SPC_STARS][f.largeur()+SPC_STARS];
         Films.effacer(framedScreen);
         char[][] frame = e.getFrame();
-        /**for (int i = 0; i < framedScreen.length; ++i) {
-            framedScreen[0][i] = '*'; // ligne horizontale du haut
-            System.out.println(Films.toString(framedScreen));
-            framedScreen[i][0] = '*'; // ligne vertical gauche
-            framedScreen[i][(f.largeur()+1) - 1] = '*'; //ligne vertical droite
-            framedScreen[(f.hauteur()+2) - 1][i] = '*'; // ligne horizontale du bas
-        }
-        System.out.println(Films.toString(framedScreen));
-        for (int i = 2; i < framedScreen.length; ++i) {
-            for(int j = 2; j< framedScreen[0].length; ++j){
-                framedScreen[i][j] = frame[i][j];
-            }
-        }*/
+        int height = f.hauteur();
+        int width = f.largeur();
+
         for (int i = 0; i < framedScreen.length; i++) {
-            framedScreen[i][0] = '*';
-            framedScreen[i][framedScreen.length-1] = '*';
+            framedScreen[i][0] = '*'; // ligne vertical gauche
+            framedScreen[i][framedScreen.length-1] = '*'; // ligne vertical droite
             for (int j = 0; j < framedScreen[0].length; j++) {
-                framedScreen[0][j] = '*';
-                if(!(i > 9 || j >9))
+                framedScreen[0][j] = '*';   // ligne horizontale haut
+                if(!(j >= width || i >= height))
                     framedScreen[i+1][j+1] = frame[i][j];
-                framedScreen[(f.hauteur()+2) - 1][j]= '*';
+                framedScreen[framedScreen.length - 1][j]= '*'; // ligne horizontale bas
             }
         }
         return new Frame(framedScreen);
     }
 
+    /**
+     * Permet d'obtenir un film encadré (chque image est encadré)
+     *
+     * @param f Film à encadré
+     * @return Le film encadré
+     */
     public static Film frameAMovie(Film f){
         Movie temp = (Movie)f;
         ListIterator<Frame> frames = temp.listIterator();
         while(frames.hasNext()){
            Frame framesTemp =  frames.next();
+           // modifie l'image actuelle par une image encadré
            frames.set(getFrame(temp,framesTemp));
         }
+        temp.setHeight(f.hauteur() +SPC_STARS);
+        temp.setWidth(f.hauteur()+SPC_STARS);
         return temp;
     }
 }

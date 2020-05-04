@@ -6,9 +6,10 @@ import film.Films;
 import java.util.*;
 
 public class Movie implements Film {
-    private List<Frame> movie;
-    private Film f;
     private static int num = 0;
+    private List<Frame> movie;
+    private int height;
+    private int width;
 
     /**
      * Permet de créer un film structuré à partir d'un film existant
@@ -16,7 +17,8 @@ public class Movie implements Film {
      * @param f Le film qu'on veut structurer
      */
     public Movie(Film f){
-        this.f = f;
+        this.height = f.hauteur();
+        this.width = f.largeur();
         movie = new LinkedList<>();
         char[][] écran = Films.getEcran(f);
         while(f.suivante(écran)) {
@@ -28,12 +30,30 @@ public class Movie implements Film {
 
     @Override
     public int hauteur() {
-        return f.hauteur();
+        return this.height;
     }
 
     @Override
     public int largeur() {
-        return f.largeur();
+        return this.width;
+    }
+
+    /**
+     * Permet de modifier la hauteur de notre film dans le paquetage montage
+     *
+     * @param height la nouvelle hauteur du film
+     */
+    void setHeight(int height){
+        this.height = height;
+    }
+
+    /**
+     * Permet de mmodifier la largeur de note film dans le paquetage montage
+     *
+     * @param width la nouvelle largeur du film
+     */
+    void setWidth(int width){
+        this.width = width;
     }
 
     /**
