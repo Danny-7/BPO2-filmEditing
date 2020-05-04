@@ -3,10 +3,7 @@ package montage;
 import film.Film;
 import film.Films;
 
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Movie implements Film {
     private List<Frame> movie;
@@ -43,12 +40,16 @@ public class Movie implements Film {
      *
      * @return Un itérateur de movie
      */
-    public Iterator<Frame> iterator(){
-        return movie.iterator();
+    public ListIterator<Frame> listIterator(){
+        return movie.listIterator();
+    }
+
+    public ListIterator<Frame> listIterator(int index){
+        return movie.listIterator(index);
     }
 
     private char[][] createFrame(char[][] frame){
-        char [][] temp =  movie.get(num).getFrame();
+        char [][] temp =  movie.listIterator(num).next().getFrame();
         for(int i = 0; i< temp.length; ++i) {
             for (int j = 0; j < temp[0].length; ++j) {
                 frame[i][j] = temp[i][j];
