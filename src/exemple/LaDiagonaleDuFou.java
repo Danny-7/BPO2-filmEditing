@@ -6,7 +6,6 @@ import java.io.IOException;
 import film.Film;
 import film.Films;
 import montage.Movie;
-import montage.RepeatFilm;
 
 /**
  * Un exemple basique d'implémentation de l'interface Film.
@@ -47,9 +46,9 @@ public class LaDiagonaleDuFou implements Film {
 
         Film film = new Movie(new LaDiagonaleDuFou());
 //        Films.projeter(film);
-        Film repeatFilm = RepeatFilm.repeatFilm(film,4);
-        Films.projeter(repeatFilm);
-        repeatFilm.rembobiner();
+//        Film repeatFilm = RepeatFilm.repeatFilm(film,4);
+//        Films.projeter(repeatFilm);
+//        repeatFilm.rembobiner();
         film.rembobiner();
         try {
             Films.sauvegarder(film, "fou.txt");
