@@ -12,6 +12,7 @@ public class PasteTwoFilm {
 
     /**
      * Permet d'obtenir la hauteur maximal entre un film et un autre
+     *
      * @param f1 1er film
      * @param f2 2ème film
      * @return la hauteur maximal
@@ -22,6 +23,7 @@ public class PasteTwoFilm {
 
     /**
      * Permet d'obtenir la largeur maximal entre un film et un autre
+     *
      * @param f1 1er film
      * @param f2 2ème film
      * @return la largeur maximal
@@ -31,12 +33,25 @@ public class PasteTwoFilm {
     }
 
     /**
+     * Ajoute des éléments dans une liste
+     *
+     * @param it itérateur de la liste source
+     * @param list list destinatrice
+     */
+    private static void addToList(ListIterator it, List list){
+        while(it.hasNext()){
+            list.add(it.next());
+        }
+    }
+
+    /**
      * Permet d'obtenir un film à partir de deux films mis en séquences l'un à la suite de l'autre
+     *
      * @param f1 1er film
      * @param f2 2ème film
      * @return Un nouveau film
      */
-    public static Film paste(Film f1, Film f2){
+    public static Film paste(Film f1, Film f2) {
         Movie pasteFilm = new Movie(f1);
         Movie film1 = (Movie) f1;
         Movie film2 = (Movie) f2;
@@ -49,13 +64,10 @@ public class PasteTwoFilm {
         ListIterator<Frame> it1 = film1.listIterator();
         ListIterator<Frame> it2 = film2.listIterator();
 
-        while(it1.hasNext()){
-            temp.add(it1.next());
-        }
-        while(it2.hasNext()){
-            temp.add(it2.next());
-        }
+        addToList(it1, temp);
+        addToList(it2, temp);
+
         pasteFilm.setMovie(temp);
-        return (Film)pasteFilm;
+        return (Film) pasteFilm;
     }
 }

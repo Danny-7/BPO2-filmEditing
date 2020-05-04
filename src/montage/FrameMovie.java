@@ -2,8 +2,6 @@ package montage;
 
 import film.Film;
 import film.Films;
-
-import java.util.List;
 import java.util.ListIterator;
 
 public class FrameMovie {
@@ -11,19 +9,15 @@ public class FrameMovie {
     private FrameMovie(){}
 
     /**
-     *  Permet d'obtenir une image encadré
+     * Remplit une image pour quelle soit encadrée
      *
-     * @param f Le film donné
-     * @param e L'image à encadré
-     * @return une image encadré
+     * @param f Le film où se trouve l'image
+     * @param frame l'image originale
+     * @param framedScreen l'image à remplir
      */
-    private static Frame getFrame(Film f, Frame e){
-        char[][] framedScreen = new char[f.hauteur()+SPC_STARS][f.largeur()+SPC_STARS];
-        Films.effacer(framedScreen);
-        char[][] frame = e.getFrame();
+    private static void fillFrame(Film f, char[][] frame, char[][] framedScreen){
         int height = f.hauteur();
         int width = f.largeur();
-
         for (int i = 0; i < framedScreen.length; i++) {
             framedScreen[i][0] = '*'; // ligne vertical gauche
             framedScreen[i][framedScreen.length-1] = '*'; // ligne vertical droite
@@ -34,6 +28,19 @@ public class FrameMovie {
                 framedScreen[framedScreen.length - 1][j]= '*'; // ligne horizontale bas
             }
         }
+    }
+    /**
+     *  Permet d'obtenir une image encadré
+     *
+     * @param f Le film donné
+     * @param e L'image à encadrée
+     * @return une image encadrée
+     */
+    private static Frame getFrame(Film f, Frame e){
+        char[][] framedScreen = new char[f.hauteur()+SPC_STARS][f.largeur()+SPC_STARS];
+        Films.effacer(framedScreen);
+        fillFrame(f, e.getFrame(),framedScreen);
+
         return new Frame(framedScreen);
     }
 
@@ -48,7 +55,7 @@ public class FrameMovie {
         ListIterator<Frame> frames = temp.listIterator();
         while(frames.hasNext()){
            Frame framesTemp =  frames.next();
-           // modifie l'image actuelle par une image encadré
+           // modifie l'image actuelle par une image encadrée
            frames.set(getFrame(temp,framesTemp));
         }
         temp.setHeight(f.hauteur() +SPC_STARS);
