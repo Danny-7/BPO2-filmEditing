@@ -6,7 +6,7 @@ import film.Films;
 import java.util.*;
 
 public class Movie implements Film {
-    private static int num = 0;
+    private int num;
     private List<Frame> movie;
     private int height;
     private int width;
@@ -19,6 +19,7 @@ public class Movie implements Film {
     public Movie(Film f){
         this.height = f.hauteur();
         this.width = f.largeur();
+        this.num = 0;
         movie = new LinkedList<>();
         char[][] écran = Films.getEcran(f);
         while(f.suivante(écran)) {
@@ -26,6 +27,16 @@ public class Movie implements Film {
             Films.effacer(écran);
         }
         f.rembobiner();
+    }
+
+    /**
+     * Renvoie un nouvel objet copié profondément
+     *
+     * @param film
+     * @return
+     */
+    static Movie getMovie(Film film){
+        return new Movie(film);
     }
 
     @Override

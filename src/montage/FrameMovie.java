@@ -51,7 +51,7 @@ public class FrameMovie {
      * @return Le film encadré
      */
     public static Film frameAMovie(Film f){
-        Movie temp = (Movie)f;
+        Movie temp = Movie.getMovie(f);
         ListIterator<Frame> frames = temp.listIterator();
         while(frames.hasNext()){
            Frame framesTemp =  frames.next();

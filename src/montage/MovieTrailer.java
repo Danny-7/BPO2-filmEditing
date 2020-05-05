@@ -34,7 +34,7 @@ public class MovieTrailer {
      * @return Un extrait d'un film
      */
     public static Film trailer(Film f, int start, int end){
-        Movie temp = new Movie(f);
+        Movie temp = Movie.getMovie(f);
         List<Frame> trailer = new LinkedList<>();
         if(end < start){
             temp.setMovie(trailer);

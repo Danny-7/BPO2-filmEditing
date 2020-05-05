@@ -49,18 +49,19 @@ public class LaDiagonaleDuFou implements Film {
     public static void main(String[] args) {
 
         Film film = new Movie(new LaDiagonaleDuFou());
-        Film filmTest = new Movie(new Ligne());
+//        Film filmTest = new Movie(new Ligne());
 //        Films.projeter(film);
-
-        Film pasteTwoFilm = PasteTwoFilm.paste(film, filmTest);
-        Films.projeter(pasteTwoFilm);
-        pasteTwoFilm.rembobiner();
-        try {
-            Films.sauvegarder(pasteTwoFilm, "test.txt");
+        Film films = FrameMovie.frameAMovie(film);
+//        Film pasteTwoFilm = PasteTwoFilm.paste(film, filmTest);
+        Films.projeter(films);
+        Films.projeter(film);
+        films.rembobiner();
+        /**try {
+//            Films.sauvegarder(pasteTwoFilm, "test.txt");
 //            Films.sauvegarder(trailer, "fou.txt");
         } catch (FileNotFoundException e) {
             System.err.println("Le fichier 'fou.txt' n'a pas pu être créé.");
-        }
+        }**/
 
 
     }

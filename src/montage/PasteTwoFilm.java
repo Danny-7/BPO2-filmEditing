@@ -52,9 +52,9 @@ public class PasteTwoFilm {
      * @return Un nouveau film
      */
     public static Film paste(Film f1, Film f2) {
-        Movie pasteFilm = new Movie(f1);
-        Movie film1 = (Movie) f1;
-        Movie film2 = (Movie) f2;
+        Movie pasteFilm = Movie.getMovie(f1);
+        Movie film1 = Movie.getMovie(f1);
+        Movie film2 = Movie.getMovie(f2);
 
         pasteFilm.setHeight(getMaxHeight(f1, f2));
         pasteFilm.setWidth(getMaxWidth(f1, f2));
