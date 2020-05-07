@@ -5,10 +5,7 @@ import java.io.IOException;
 
 import film.Film;
 import film.Films;
-import montage.FrameMovie;
-import montage.Movie;
-import montage.MovieTrailer;
-import montage.PasteTwoFilm;
+import montage.*;
 
 /**
  * Un exemple basique d'implémentation de l'interface Film.
@@ -49,9 +46,9 @@ public class LaDiagonaleDuFou implements Film {
     public static void main(String[] args) {
 
         Film film = new Movie(new LaDiagonaleDuFou());
-//        Film filmTest = new Movie(new Ligne());
+        Film filmTest = new Movie(new Ligne());
 //        Films.projeter(film);
-        Film films = FrameMovie.frameAMovie(film);
+        Film films = InlayFilm.insert(film, filmTest, 22, 5);
 //        Film pasteTwoFilm = PasteTwoFilm.paste(film, filmTest);
         Films.projeter(films);
         Films.projeter(film);

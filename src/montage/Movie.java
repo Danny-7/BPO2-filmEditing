@@ -95,6 +95,10 @@ public class Movie implements Film {
         return movie.listIterator(index);
     }
 
+    List<Frame> getMovie(){
+        return movie;
+    }
+
     /**
      * Permet de créer une image du film
      *
