@@ -6,9 +6,7 @@ public class Editing {
 
     private Editing(){}
 
-    public static Film repeat(Film f, int nbrep){
-        return null;
-    }
+    public static Film repeat(Film f, int nbrep){ return RepeatFilm.repeatFilm(f, nbrep); }
 
     public static Film frameAMovie(Film f){
         return FrameMovie.frameAMovie(f);

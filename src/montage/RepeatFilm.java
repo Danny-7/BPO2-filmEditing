@@ -2,7 +2,6 @@ package montage;
 
 import film.Film;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
@@ -20,7 +19,7 @@ public class RepeatFilm {
      */
     public static Film repeatFilm(Film f, int nbRep){
         // Création d'un film
-        Movie temp = new Movie(f);
+        Movie temp = Movie.getMovie(f);
         List<Frame> movieReapeated = new LinkedList<>();
         // Création d'un itérateur de notre film
         ListIterator<Frame> originalMovie = temp.listIterator();
@@ -30,7 +29,7 @@ public class RepeatFilm {
             }
             originalMovie = temp.listIterator();
         }
-        // On switch de list pour notre film répété
+        // On switch de liste pour notre film répété
         temp.setMovie(movieReapeated);
         return (Film) temp;
     }
