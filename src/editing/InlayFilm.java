@@ -1,4 +1,4 @@
-package montage;
+package editing;
 
 import film.Film;
 import java.util.List;
