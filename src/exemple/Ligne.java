@@ -16,7 +16,7 @@ public class Ligne implements Film {
 
     @Override
     public int hauteur() {
-        return 15;
+        return 10;
     }
 
     @Override

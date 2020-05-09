@@ -48,11 +48,11 @@ public class LaDiagonaleDuFou implements Film {
         Film film = new Movie(new LaDiagonaleDuFou());
         Film filmTest = new Movie(new Ligne());
 //        Films.projeter(film);
-        Film films = InlayFilm.insert(film, filmTest, 22, 5);
+        Film films = InlayFilm.inlay(film, filmTest, 22, 5);
 //        Film pasteTwoFilm = PasteTwoFilm.paste(film, filmTest);
         Films.projeter(films);
-        Films.projeter(film);
-        films.rembobiner();
+//        Films.projeter(film);
+//        films.rembobiner();
         /**try {
 //            Films.sauvegarder(pasteTwoFilm, "test.txt");
 //            Films.sauvegarder(trailer, "fou.txt");

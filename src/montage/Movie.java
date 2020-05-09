@@ -95,7 +95,7 @@ public class Movie implements Film {
         return movie.listIterator(index);
     }
 
-    List<Frame> getMovie(){
+    List<Frame> getFrames(){
         return movie;
     }
 
