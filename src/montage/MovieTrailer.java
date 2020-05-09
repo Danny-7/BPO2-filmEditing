@@ -2,25 +2,24 @@ package montage;
 
 import film.Film;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
-public class MovieTrailer {
+class MovieTrailer {
 
     private MovieTrailer(){}
 
     /**
-     * Permet d'ajouter dans une list des élements à partir d'une position de début et de fin
+     * Permet d'ajouter dans une liste des élements à partir d'une position de début et de fin
      *
-     * @param list la list où l'on doit ajouter des éléments
-     * @param it itérateur des élements présent dans une list
+     * @param list la liste où l'on doit ajouter des éléments
+     * @param it itérateur des élements présent dans une liste
      * @param start position de départ
      * @param end position de fin
      */
     private static void addToListByPos(List list, ListIterator it, int start, int end){
-        for(int i = start; i < end; ++i){
+        for(; start < end; ++start){
             list.add(it.next());
         }
     }
@@ -36,6 +35,7 @@ public class MovieTrailer {
     public static Film trailer(Film f, int start, int end){
         Movie temp = Movie.getMovie(f);
         List<Frame> trailer = new LinkedList<>();
+        // si la position de fin est inférieur à la position de départ on retourne un film vide
         if(end < start){
             temp.setMovie(trailer);
         }

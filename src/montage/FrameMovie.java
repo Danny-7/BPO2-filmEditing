@@ -4,8 +4,9 @@ import film.Film;
 import film.Films;
 import java.util.ListIterator;
 
-public class FrameMovie {
-    private final static int SPC_STARS = 2;
+ class FrameMovie {
+    private final static int SPC_STARS = 2; // espace pour encadrer le film
+
     private FrameMovie(){}
 
     /**
@@ -18,6 +19,7 @@ public class FrameMovie {
     private static void fillFrame(Film f, char[][] frame, char[][] framedScreen){
         int height = f.hauteur();
         int width = f.largeur();
+
         for (int i = 0; i < framedScreen.length; i++) {
             framedScreen[i][0] = '*'; // ligne vertical gauche
             framedScreen[i][framedScreen.length-1] = '*'; // ligne vertical droite
@@ -33,7 +35,7 @@ public class FrameMovie {
      *  Permet d'obtenir une image encadré
      *
      * @param f Le film donné
-     * @param e L'image à encadrée
+     * @param e L'image à encadrer
      * @return une image encadrée
      */
     private static Frame getFrame(Film f, Frame e){
@@ -45,9 +47,9 @@ public class FrameMovie {
     }
 
     /**
-     * Permet d'obtenir un film encadré (chque image est encadré)
+     * Permet d'obtenir un film encadré (chaque image est encadrée)
      *
-     * @param f Film à encadré
+     * @param f Film à encadrer
      * @return Le film encadré
      */
     public static Film frameAMovie(Film f){
@@ -58,6 +60,7 @@ public class FrameMovie {
            // modifie l'image actuelle par une image encadrée
            frames.set(getFrame(temp,framesTemp));
         }
+        // on change la hauteur et la largeur du film
         temp.setHeight(f.hauteur() +SPC_STARS);
         temp.setWidth(f.hauteur()+SPC_STARS);
         return temp;

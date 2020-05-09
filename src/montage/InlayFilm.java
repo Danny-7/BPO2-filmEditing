@@ -4,7 +4,7 @@ import film.Film;
 import java.util.List;
 import java.util.ListIterator;
 
-public class InlayFilm {
+ class InlayFilm {
    static boolean first = true;
 
     private InlayFilm(){}
@@ -34,6 +34,7 @@ public class InlayFilm {
         // incrustation du film
         inlayFilm(frames, iteratorOfTheInlay, iteratorFromFilmToInlaid, indexStartOfInlay, column);
         film1.setMovie(frames);
+
         return (Film) film1;
     }
 
@@ -61,8 +62,9 @@ public class InlayFilm {
     }
 
     /**
+     * Incruste une image dans une image de départ
      *
-     * @param original l'image original à modifié
+     * @param original l'image de départ à modifier
      * @param dest l'image à incruster
      * @param row ligne d'incrustation
      * @param column colonne d'incrustation

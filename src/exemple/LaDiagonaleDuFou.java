@@ -1,8 +1,6 @@
 package exemple;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
-
 import film.Film;
 import film.Films;
 import montage.*;
@@ -48,18 +46,16 @@ public class LaDiagonaleDuFou implements Film {
         Film film = new Movie(new LaDiagonaleDuFou());
         Film filmTest = new Movie(new Ligne());
 //        Films.projeter(film);
-        Film films = InlayFilm.inlay(film, filmTest, 22, 5);
-//        Film pasteTwoFilm = PasteTwoFilm.paste(film, filmTest);
-        Films.projeter(films);
+//        Film films = InlayFilm.inlay(film, filmTest, 22, 5);
+        Film pasteTwoFilm = Editing.paste(film, filmTest);
+        Films.projeter(pasteTwoFilm);
 //        Films.projeter(film);
 //        films.rembobiner();
-        /**try {
-//            Films.sauvegarder(pasteTwoFilm, "test.txt");
+        /*try {
+            Films.sauvegarder(films, "test.txt");
 //            Films.sauvegarder(trailer, "fou.txt");
         } catch (FileNotFoundException e) {
             System.err.println("Le fichier 'fou.txt' n'a pas pu être créé.");
-        }**/
-
-
+        }*/
     }
 }

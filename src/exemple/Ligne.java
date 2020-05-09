@@ -1,11 +1,5 @@
 package exemple;
-
 import film.Film;
-import film.Films;
-import montage.Movie;
-import montage.PasteTwoFilm;
-
-import java.io.FileNotFoundException;
 
 /**
  * Un exemple basique d'implémentation de l'interface Film.

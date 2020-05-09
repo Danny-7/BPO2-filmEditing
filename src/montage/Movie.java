@@ -32,8 +32,8 @@ public class Movie implements Film {
     /**
      * Renvoie un nouvel objet copié profondément
      *
-     * @param film
-     * @return
+     * @param film  Film à copié
+     * @return Le film avec nouvelle référence
      */
     static Movie getMovie(Film film){
         return new Movie(film);
@@ -116,7 +116,7 @@ public class Movie implements Film {
     }
 
     /**
-     *  Vérifie s'il y'a encore une image disponible
+     * Vérifie s'il y'a encore une image disponible
      * @param écran
      *            L'écran où afficher l'image
      * @return Vrai si 'image suivante a été affiché sinon faux
@@ -156,7 +156,7 @@ class Frame{
     /**
      * Modifie l'image actuelle
      *
-     * @param frameTemp
+     * @param frameTemp le tableau 2D à affecter
      */
     public void setFrame(char[][] frameTemp){
         this.frame = frameTemp;
