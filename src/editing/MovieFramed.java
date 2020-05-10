@@ -4,10 +4,10 @@ import film.Film;
 import film.Films;
 import java.util.ListIterator;
 
- class FrameMovie {
+ class MovieFramed {
     private final static int SPC_STARS = 2; // espace pour encadrer le film
 
-    private FrameMovie(){}
+    private MovieFramed(){}
 
     /**
      * Remplit une image pour quelle soit encadrée
