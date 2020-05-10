@@ -8,7 +8,7 @@ public class RealTrailer implements Film {
 
     public RealTrailer(int start, int end){
         num+= start;
-        NB_IMAGES-= end;
+        NB_IMAGES = end;
     }
 
     @Override

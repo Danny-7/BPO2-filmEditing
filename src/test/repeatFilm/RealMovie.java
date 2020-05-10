@@ -3,12 +3,11 @@ package test.repeatFilm;
 import film.Film;
 
 public class RealMovie implements Film {
-    private static int nbRep;
     private int num = 0;
-    private static final int NB_IMAGES = 20* nbRep;
+    private static int NB_IMAGES = 20;
 
     public RealMovie(int nbRep){
-        nbRep = nbRep;
+        NB_IMAGES *= nbRep;
     }
 
     @Override

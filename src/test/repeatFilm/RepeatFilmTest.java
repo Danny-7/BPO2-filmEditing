@@ -7,44 +7,50 @@ import editing.Editing;
 import editing.Movie;
 import org.junit.jupiter.api.Test;
 
-import java.io.Console;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class RepeatFilmTest{
 
-    private static void clearScreen() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-    }
-
-    private static String toString(Console console){
+    private static String toString(Film f){
         StringBuilder sb = new StringBuilder("");
-        while(console != null){
-           sb.append(console.readLine() + "\n");
+        char[][] display = new char[f.hauteur()][f.largeur()];
+        while(f.suivante(display)){
+           sb.append(Films.toString(display)+ "\n");
         }
         return sb.toString();
     }
 
-    @Test
-    public void test(){
+    private void testRepeatFilm(){
         int nbRep = 2;
 
         Film f = new Movie(new RealMovie(nbRep));
         Film filmToTest = new Movie(new LaDiagonaleDuFou());
         filmToTest = Editing.repeat(filmToTest, nbRep);
-        Films.projeter(filmToTest);
         String filmToTestString = "";
         String film = "";
-        Console console = System.console();
-        filmToTestString = toString(console);
-        clearScreen();
-        Films.projeter(f);
-        film = toString(console);
-
+        filmToTestString = toString(filmToTest);
+        film = toString(f);
         // test si le film répeter
         assertEquals(film, filmToTestString);
+    }
+
+    private void testEmptyRepeatFilm(){
+        int nbRep = 0;
+        Film f = new Movie(new RealMovie(nbRep));
+        Film filmToTest = new Movie(new LaDiagonaleDuFou());
+        filmToTest = Editing.repeat(filmToTest, nbRep);
+        String filmToTestString = "";
+        String film = "";
+        filmToTestString = toString(filmToTest);
+        film = toString(f);
+        // test si le film répeter
+        assertEquals(film, filmToTestString);
+    }
+
+    @Test
+    public void test(){
+        testRepeatFilm();
+        testEmptyRepeatFilm();
     }
 
 

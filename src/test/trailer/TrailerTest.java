@@ -13,15 +13,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TrailerTest {
 
-    private static void clearScreen() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-    }
-
-    private static String toString(Console console){
+    private static String toString(Film f){
         StringBuilder sb = new StringBuilder("");
-        while(console != null){
-            sb.append(console.readLine() + "\n");
+        char[][] display = new char[f.hauteur()][f.largeur()];
+        while(f.suivante(display)){
+            sb.append(Films.toString(display)+ "\n");
         }
         return sb.toString();
     }
@@ -37,17 +33,12 @@ public class TrailerTest {
         Film filmToTest = new Movie(new LaDiagonaleDuFou());
         filmToTest = Editing.trailer(filmToTest, start, end);
 
-        Films.projeter(filmToTest);
-
         String filmToTestString = "";
         String film = "";
 
-        Console console = System.console();
-        filmToTestString = toString(console);
-        clearScreen();
+        filmToTestString = toString(filmToTest);
 
-        Films.projeter(f);
-        film = toString(console);
+        film = toString(f);
 
         assertEquals(film, filmToTestString);
     }

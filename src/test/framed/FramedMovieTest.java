@@ -7,23 +7,17 @@ import editing.Editing;
 import editing.Movie;
 import org.junit.jupiter.api.Test;
 
-import java.io.Console;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FramedMovieTest {
 
-    private static String toString(Console console){
+    private static String toString(Film f){
         StringBuilder sb = new StringBuilder("");
-        while(console != null){
-            sb.append(console.readLine() + "\n");
+        char[][] display = new char[f.hauteur()][f.largeur()];
+        while(f.suivante(display)){
+            sb.append(Films.toString(display)+ "\n");
         }
         return sb.toString();
-    }
-
-    private static void clearScreen() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
     }
 
     @Test
@@ -32,16 +26,10 @@ public class FramedMovieTest {
         Film f = new Movie(new FramedMovie());
         Film filmToTest = new Movie(new LaDiagonaleDuFou());
         filmToTest = Editing.frameAMovie(filmToTest);
-        Films.projeter(filmToTest);
         String filmToTestString = "";
         String film = "";
-        Console console = System.console();
-        filmToTestString = toString(console);
-        clearScreen();
-        Films.projeter(f);
-        film = toString(console);
-
-
+        filmToTestString = toString(filmToTest);
+        film = toString(f);
         assertEquals(film, filmToTestString);
     }
 }
