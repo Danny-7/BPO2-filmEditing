@@ -59,7 +59,7 @@ public class Movie implements Film {
     }
 
     /**
-     * Permet de mmodifier la largeur de note film dans le paquetage montage
+     * Permet de modifier la largeur de notre film dans le paquetage montage
      *
      * @param width la nouvelle largeur du film
      */
@@ -95,6 +95,11 @@ public class Movie implements Film {
         return movie.listIterator(index);
     }
 
+    /**
+     * Permet d'obtenir la liste du film
+     *
+     * @return liste de frame
+     */
     List<Frame> getFrames(){
         return movie;
     }
