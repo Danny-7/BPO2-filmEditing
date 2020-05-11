@@ -6,50 +6,38 @@ import film.Films;
 import editing.Editing;
 import editing.Movie;
 import org.junit.jupiter.api.Test;
+import test.TestMovie;
+import test.resources.RealMovie;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class RepeatFilmTest{
+public class RepeatFilmTest extends TestMovie {
 
-    private static String toString(Film f){
-        StringBuilder sb = new StringBuilder("");
-        char[][] display = new char[f.hauteur()][f.largeur()];
-        while(f.suivante(display)){
-           sb.append(Films.toString(display)+ "\n");
-        }
-        return sb.toString();
-    }
+    private RepeatFilmTest(){ super();}
 
-    private void testRepeatFilm(){
-        int nbRep = 2;
-
+    private void testRepeatFilm(int nbRep){
         Film f = new Movie(new RealMovie(nbRep));
+
         Film filmToTest = new Movie(new LaDiagonaleDuFou());
         filmToTest = Editing.repeat(filmToTest, nbRep);
-        String filmToTestString = "";
-        String film = "";
-        filmToTestString = toString(filmToTest);
-        film = toString(f);
+        String filmToTestString = toString(filmToTest);
+        String film = toString(f);
+
         // test si le film répeter
         assertEquals(film, filmToTestString);
     }
 
     private void testEmptyRepeatFilm(){
-        int nbRep = 0;
-        Film f = new Movie(new RealMovie(nbRep));
-        Film filmToTest = new Movie(new LaDiagonaleDuFou());
-        filmToTest = Editing.repeat(filmToTest, nbRep);
-        String filmToTestString = "";
-        String film = "";
-        filmToTestString = toString(filmToTest);
-        film = toString(f);
-        // test si le film répeter
-        assertEquals(film, filmToTestString);
+        testRepeatFilm(0);
+    }
+
+    private void testTrueRepeatFilm(){
+        testRepeatFilm(5);
     }
 
     @Test
     public void test(){
-        testRepeatFilm();
+        testTrueRepeatFilm();
         testEmptyRepeatFilm();
     }
 

@@ -4,42 +4,32 @@ import editing.Editing;
 import editing.Movie;
 import exemple.LaDiagonaleDuFou;
 import film.Film;
-import film.Films;
 import org.junit.jupiter.api.Test;
+import test.TestMovie;
+import test.resources.RealTrailer;
 
-import java.io.Console;
+import static org.junit.jupiter.api.Assertions.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+public class TrailerTest extends TestMovie {
 
-public class TrailerTest {
-
-    private static String toString(Film f){
-        StringBuilder sb = new StringBuilder("");
-        char[][] display = new char[f.hauteur()][f.largeur()];
-        while(f.suivante(display)){
-            sb.append(Films.toString(display)+ "\n");
-        }
-        return sb.toString();
-    }
-
+    private TrailerTest(){ super();}
 
     @Test
     public void test(){
         int start = 2;
         int end = 15;
+        int nbFrame = end - start;
 
         Film f = new Movie(new RealTrailer(start, end));
 
         Film filmToTest = new Movie(new LaDiagonaleDuFou());
-        filmToTest = Editing.trailer(filmToTest, start, end);
+        Film finalFilmToTest = Editing.trailer(filmToTest, start, end);
 
-        String filmToTestString = "";
-        String film = "";
+        String filmToTestString = toString(finalFilmToTest);
 
-        filmToTestString = toString(filmToTest);
-
-        film = toString(f);
+        String film = toString(f);
 
         assertEquals(film, filmToTestString);
+        assertFalse(TestMovie.getNbFrames()/2 != nbFrame);
     }
 }

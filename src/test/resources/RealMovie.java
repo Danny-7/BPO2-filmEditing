@@ -1,14 +1,13 @@
-package test.trailer;
+package test.resources;
 
 import film.Film;
 
-public class RealTrailer implements Film {
+public class RealMovie implements Film {
     private int num = 0;
     private static int NB_IMAGES = 20;
 
-    public RealTrailer(int start, int end){
-        num+= start;
-        NB_IMAGES = end;
+    public RealMovie(int nbRep){
+        NB_IMAGES *= nbRep;
     }
 
     @Override

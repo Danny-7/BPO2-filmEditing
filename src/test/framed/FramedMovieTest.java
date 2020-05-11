@@ -1,35 +1,32 @@
 package test.framed;
 
-import exemple.LaDiagonaleDuFou;
+import exemple.LineJump;
 import film.Film;
-import film.Films;
 import editing.Editing;
 import editing.Movie;
 import org.junit.jupiter.api.Test;
+import test.TestMovie;
+import test.resources.FramedMovie;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class FramedMovieTest {
 
-    private static String toString(Film f){
-        StringBuilder sb = new StringBuilder("");
-        char[][] display = new char[f.hauteur()][f.largeur()];
-        while(f.suivante(display)){
-            sb.append(Films.toString(display)+ "\n");
-        }
-        return sb.toString();
-    }
+public class FramedMovieTest extends TestMovie {
+
+    private FramedMovieTest(){ super();}
 
     @Test
     public void test(){
 
-        Film f = new Movie(new FramedMovie());
-        Film filmToTest = new Movie(new LaDiagonaleDuFou());
-        filmToTest = Editing.frameAMovie(filmToTest);
-        String filmToTestString = "";
-        String film = "";
-        filmToTestString = toString(filmToTest);
-        film = toString(f);
+        Film f = new FramedMovie(new LineJump());
+        Film filmToTest = new Movie(new LineJump());
+
+        Film finalFilmToTest = Editing.frameAMovie(filmToTest);
+
+        String filmToTestString =  toString(finalFilmToTest);
+        String film = toString(f);
+
         assertEquals(film, filmToTestString);
+        assertTrue(finalFilmToTest.hauteur() == f.hauteur() && finalFilmToTest.largeur() == f.largeur());
     }
 }
