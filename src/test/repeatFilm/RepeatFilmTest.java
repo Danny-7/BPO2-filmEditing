@@ -15,6 +15,11 @@ public class RepeatFilmTest extends TestMovie {
 
     private RepeatFilmTest(){ super();}
 
+    /**
+     * Un test général pour répéter un film
+     *
+     * @param nbRep nombre de répétitions
+     */
     private void testRepeatFilm(int nbRep){
         Film f = new Movie(new RealMovie(nbRep));
 
@@ -26,11 +31,12 @@ public class RepeatFilmTest extends TestMovie {
         // test si le film répeter
         assertEquals(film, filmToTestString);
     }
-
+    // test lors d'une entrée de nbRep <= 0
     private void testEmptyRepeatFilm(){
         testRepeatFilm(0);
     }
 
+    // test lors d'une entrée de nbRep > 0
     private void testTrueRepeatFilm(){
         testRepeatFilm(5);
     }

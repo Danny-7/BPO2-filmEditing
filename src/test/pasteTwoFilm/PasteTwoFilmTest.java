@@ -26,6 +26,7 @@ public class PasteTwoFilmTest extends TestMovie {
         assertEquals(film, filmToTestString);
         // vérifie la condition de la hauteur et largeur du film collé (la hauteur et la largeur doit être le max
         // entre les deux films)
+
         assertTrue(finalFilmPaste.hauteur() == Math.max(filmToTest.hauteur(),filmToTest2.hauteur()) &&
                 finalFilmPaste.largeur() == Math.max(filmToTest.largeur(),filmToTest2.largeur()));
     }

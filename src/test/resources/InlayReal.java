@@ -30,21 +30,21 @@ public class InlayReal implements Film {
 
     @Override
     public boolean suivante(char[][] écran) {
-        if(original.suivante(écran)){
-            //écran du deuxième film
+        if (original.suivante(écran)) {
             char[][] display = new char[toInlay.hauteur()][toInlay.largeur()];
-            if(num > row/toInlay.hauteur() && toInlay.suivante(display))
-                for(int i = 0; row< original.hauteur(); ++row){
-                    for(int j = 0; column < original.largeur(); ++column) {
+            if (num >= row / original.hauteur()  && toInlay.suivante(display)) {
+                for (int i = 0; row < original.hauteur(); ++row) {
+                    for (int j = 0; column < original.largeur(); ++column) {
                         if (!(row > display.length && column > display[0].length)) {
                             écran[row][column] = display[i][j];
-                            ++j;
                         }
+                        ++j;
                     }
                     column = 0;
                     ++i;
                 }
-            ++num;
+                ++num;
+            }
             return true;
         }
         return false;

@@ -43,10 +43,10 @@ public class LaDiagonaleDuFou implements Film {
     public static void main(String[] args) {
 
         Film film = new Movie(new LaDiagonaleDuFou());
-        Film filmTest = new Movie(new Ligne());
+        Film filmTest = new Movie(new LineJump());
        Film repeat = Editing.repeat(filmTest, 2);
-//        repeat = Editing.paste(repeat, film);
-        repeat = Editing.inlay(film, repeat, 5, 2);
+        repeat = Editing.paste(repeat, film);
+        repeat = Editing.inlay(film, repeat, 200, 5);
         repeat = Editing.frameAMovie(repeat);
         Films.projeter(repeat);
 //        Films.projeter(film);

@@ -30,6 +30,7 @@ public class TrailerTest extends TestMovie {
         String film = toString(f);
 
         assertEquals(film, filmToTestString);
+        // vérification que le nombre d'images est bien cohérent avec les données entrées
         assertFalse(TestMovie.getNbFrames()/2 != nbFrame);
     }
 }
