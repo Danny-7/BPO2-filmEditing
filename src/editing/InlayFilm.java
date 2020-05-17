@@ -32,7 +32,7 @@ import java.util.ListIterator;
 
         List<Frame> frames = film1.getFrames();
         // incrustation du film
-        inlayFilm(frames, iteratorOfTheInlay, iteratorFromFilmToInlaid, indexStartOfInlay, column);
+        inlayFilm(frames, iteratorOfTheInlay, iteratorFromFilmToInlaid, row, column);
         film1.setMovie(frames);
 
         return (Film) film1;

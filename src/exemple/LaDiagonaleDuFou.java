@@ -44,9 +44,9 @@ public class LaDiagonaleDuFou implements Film {
 
         Film film = new Movie(new LaDiagonaleDuFou());
         Film filmTest = new Movie(new Ligne());
-        Film repeat = Editing.repeat(filmTest, 10);
-        repeat = Editing.paste(repeat, film);
-        repeat = Editing.inlay(repeat, film, 80, 4);
+       Film repeat = Editing.repeat(filmTest, 2);
+//        repeat = Editing.paste(repeat, film);
+        repeat = Editing.inlay(film, repeat, 5, 2);
         repeat = Editing.frameAMovie(repeat);
         Films.projeter(repeat);
 //        Films.projeter(film);
