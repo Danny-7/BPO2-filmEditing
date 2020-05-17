@@ -9,7 +9,7 @@ public class Editing {
     public static Film repeat(Film f, int nbrep){ return RepeatFilm.repeatFilm(f, nbrep); }
 
     public static Film frameAMovie(Film f){
-        return FrameMovie.frameAMovie(f);
+        return MovieFramed.frameAMovie(f);
     }
 
     public static Film trailer(Film f, int start, int end){
