@@ -28,7 +28,7 @@ public class RepeatFilmTest extends TestMovie {
         String filmToTestString = toString(filmToTest);
         String film = toString(f);
 
-        // test si le film répeter
+        // test si le film répéter est celui attendu
         assertEquals(film, filmToTestString);
     }
     // test lors d'une entrée de nbRep <= 0
@@ -46,6 +46,4 @@ public class RepeatFilmTest extends TestMovie {
         testTrueRepeatFilm();
         testEmptyRepeatFilm();
     }
-
-
 }

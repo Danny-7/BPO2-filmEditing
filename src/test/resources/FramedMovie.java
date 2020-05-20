@@ -19,7 +19,7 @@ public class FramedMovie implements Film {
 
     @Override
     public int largeur() {
-        return f.largeur()+2; // ce sera un carré
+        return f.largeur()+2;
     }
 
     @Override

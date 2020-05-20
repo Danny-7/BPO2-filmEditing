@@ -28,7 +28,7 @@ public class FramedMovieTest extends TestMovie {
 
         // comparaison de deux réprésentation de film (film attendu, film obtenu)
         assertEquals(film, filmToTestString);
-        // verification que la hauteur et la largeur aie changé
+        // verification que la hauteur et la largeur a changé
         assertTrue(finalFilmToTest.hauteur() == f.hauteur() && finalFilmToTest.largeur() == f.largeur());
     }
 }
