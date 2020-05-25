@@ -1,4 +1,4 @@
-package personalTest.resources;
+package test.resources;
 
 import film.Film;
 import film.Films;

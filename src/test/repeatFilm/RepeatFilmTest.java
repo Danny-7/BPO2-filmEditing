@@ -1,12 +1,12 @@
-package personalTest.repeatFilm;
+package test.repeatFilm;
 
 import exemple.LaDiagonaleDuFou;
 import film.Film;
 import editing.Editing;
 import editing.Movie;
 import org.junit.jupiter.api.Test;
-import personalTest.TestMovie;
-import personalTest.resources.RealMovie;
+import test.TestMovie;
+import test.resources.RealMovie;
 
 import static org.junit.jupiter.api.Assertions.*;
 

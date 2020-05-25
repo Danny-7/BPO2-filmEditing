@@ -1,12 +1,12 @@
-package personalTest.trailer;
+package test.trailer;
 
 import editing.Editing;
 import editing.Movie;
 import exemple.LaDiagonaleDuFou;
 import film.Film;
 import org.junit.jupiter.api.Test;
-import personalTest.TestMovie;
-import personalTest.resources.RealTrailer;
+import test.TestMovie;
+import test.resources.RealTrailer;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -31,6 +31,6 @@ public class TrailerTest extends TestMovie {
 
         assertEquals(film, filmToTestString);
         // vérification que le nombre d'images est bien cohérent avec les données entrées
-        assertFalse(TestMovie.getNbFrames()/2 != nbFrame);
+        assertFalse(TestMovie.getNbFrames()/2 != nbFrame+1);
     }
 }

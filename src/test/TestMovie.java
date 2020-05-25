@@ -1,4 +1,4 @@
-package personalTest;
+package test;
 
 import film.Film;
 import film.Films;
@@ -16,7 +16,7 @@ public class TestMovie {
      */
     public static String toString(Film f){
         StringBuilder sb = new StringBuilder("");
-        char[][] display = new char[f.hauteur()][f.largeur()];
+        char[][] display = Films.getEcran(f);
         while(f.suivante(display)){
             ++nbFrame;
             // ajout de chaque image dans le builder de la chaine  de caractères

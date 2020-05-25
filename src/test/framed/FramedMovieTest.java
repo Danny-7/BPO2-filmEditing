@@ -1,12 +1,12 @@
-package personalTest.framed;
+package test.framed;
 
 import exemple.LineJump;
 import film.Film;
 import editing.Editing;
 import editing.Movie;
 import org.junit.jupiter.api.Test;
-import personalTest.TestMovie;
-import personalTest.resources.FramedMovie;
+import test.TestMovie;
+import test.resources.FramedMovie;
 
 import static org.junit.jupiter.api.Assertions.*;
 
