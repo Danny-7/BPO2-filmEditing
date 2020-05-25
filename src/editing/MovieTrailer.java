@@ -19,7 +19,7 @@ class MovieTrailer {
      * @param end position de fin
      */
     private static void addToListByPos(List list, ListIterator it, int start, int end){
-        for(; start < end; ++start){
+        for(; start <= end; ++start){
             list.add(it.next());
         }
     }
@@ -35,11 +35,15 @@ class MovieTrailer {
     public static Film trailer(Film f, int start, int end){
         Movie temp = Movie.getMovie(f);
         List<Frame> trailer = new LinkedList<>();
-        // si la position de fin est inférieur à la position de départ on retourne un film vide
-        if(end < start){
+        // si la position de fin est inférieure à la position de départ on retourne un film vide
+        if(end > temp.getFrames().size())
+            return (Film) temp;
+        else if(start == end || end < 0)
             temp.setMovie(trailer);
-        }
         else{
+            // en cas de position de départ négative on part de 0
+            if(start < 0)
+                start = 0;
             ListIterator<Frame> originalMovie = temp.listIterator(start);
             addToListByPos(trailer, originalMovie, start, end );
         }

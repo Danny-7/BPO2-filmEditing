@@ -1,4 +1,4 @@
-package test.inlaidFilm;
+package personalTest.inlaidFilm;
 
 import editing.Editing;
 import editing.Movie;
@@ -7,8 +7,8 @@ import exemple.Ligne;
 import film.Film;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import test.TestMovie;
-import test.resources.InlayReal;
+import personalTest.TestMovie;
+import personalTest.resources.InlayReal;
 
 public class InlaidTest extends TestMovie {
 

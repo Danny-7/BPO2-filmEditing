@@ -114,7 +114,9 @@ public class Movie implements Film {
         char [][] temp =  movie.listIterator(num).next().getFrame();
         for(int i = 0; i< temp.length; ++i) {
             for (int j = 0; j < temp[0].length; ++j) {
-                frame[i][j] = temp[i][j];
+                //si l'écran passé en paramètre est vide à cette position
+                if(frame[i][j] == ' ')
+                    frame[i][j] = temp[i][j];
             }
         }
         return frame;

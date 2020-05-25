@@ -1,12 +1,12 @@
-package test.trailer;
+package personalTest.trailer;
 
 import editing.Editing;
 import editing.Movie;
 import exemple.LaDiagonaleDuFou;
 import film.Film;
 import org.junit.jupiter.api.Test;
-import test.TestMovie;
-import test.resources.RealTrailer;
+import personalTest.TestMovie;
+import personalTest.resources.RealTrailer;
 
 import static org.junit.jupiter.api.Assertions.*;
 

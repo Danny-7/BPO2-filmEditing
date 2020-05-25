@@ -4,8 +4,7 @@ import film.Film;
 import java.util.List;
 import java.util.ListIterator;
 
- class InlayFilm {
-   static boolean first = true;
+class InlayFilm {
 
     private InlayFilm(){}
 
@@ -22,9 +21,15 @@ import java.util.ListIterator;
         // Obtention d'un movie à partir d'un film
         Movie film1 = Movie.getMovie(f1);
         Movie film2 = Movie.getMovie(f2);
+
+        if(row < 0 && column < 0) {
+            row = 0;
+            column = 0;
+        }
+
         // Obtient l'image où le film a incrusté va être incrusté
         int indexStartOfInlay = row / f1.hauteur();
-        
+
         // le curseur de départ de l'incrustation
         ListIterator<Frame> iteratorOfTheInlay = film1.listIterator(indexStartOfInlay);
         // le curseur du film à être incrusté
@@ -51,16 +56,25 @@ import java.util.ListIterator;
         while(it1.hasNext() && it2.hasNext()){
             Frame e = it1.next();
             Frame e2 = it2.next();
-            // si première image à incrusté
-            if(first) {
-                frames.set(it1.previousIndex(), fill(e, e2, row - 1, column - 1));
-                first = false;
-            }
-            else
-                frames.set(it1.previousIndex(), fill(e, e2, 0,0));
+            frames.set(it1.previousIndex(), fill(e, e2, row,column));
         }
     }
 
+    /**
+     * Vérifie que la ligne ou la colonne ne dépasse pas du film à incruster
+     * @param frame l'image du film
+     * @param row la ligne d'incrustation
+     * @param column la colonne d'incrustation
+     * @return true or false
+     */
+    private static boolean checkFrame(char[][] frame, int row, int column){
+        if(column > frame[0].length-1)
+            return false;
+        if(row > frame.length -1)
+            return false;
+
+        return true;
+    }
     /**
      * Incruste une image dans une image de départ
      *
@@ -74,15 +88,16 @@ import java.util.ListIterator;
         char[][] frame = original.getFrame();
         char[][] frameToInlay = dest.getFrame();
         int k = 0; int l = 0;
+        int tempCol = column;
 
         for(; row< frame.length; ++row){
             for(; column< frame[0].length; ++column){
-                if(!(row > frameToInlay.length && column > frameToInlay[0].length)){
+                if(checkFrame(frameToInlay, k, l)){
                     frame[row][column] = frameToInlay[k][l];
                     ++l;
                 }
             }
-            column = 0; l = 0;
+            column = tempCol; l = 0;
             ++k;
         }
         return new Frame(frame);

@@ -5,7 +5,7 @@ import film.Film;
 import java.util.List;
 import java.util.ListIterator;
 
- class PasteTwoFilm {
+class PasteTwoFilm {
 
     private PasteTwoFilm(){}
 

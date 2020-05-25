@@ -1,4 +1,4 @@
-package test.pasteTwoFilm;
+package personalTest.pasteTwoFilm;
 
 import editing.Editing;
 import editing.Movie;
@@ -6,8 +6,8 @@ import exemple.LaDiagonaleDuFou;
 import exemple.Ligne;
 import film.Film;
 import org.junit.jupiter.api.Test;
-import test.TestMovie;
-import test.resources.FilmExpectedtoPaste;
+import personalTest.TestMovie;
+import personalTest.resources.FilmExpectedtoPaste;
 
 import static org.junit.jupiter.api.Assertions.*;
 

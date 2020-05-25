@@ -1,4 +1,4 @@
-package test;
+package personalTest;
 
 import film.Film;
 import film.Films;
