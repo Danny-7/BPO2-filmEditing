@@ -14,7 +14,7 @@ class RepeatFilm {
     /**
      * Permet de répéter n fois un film
      *
-     * @param f     Le film à répéter
+     * @param f Le film à répéter
      * @param nbRep le nombre de fois qu'on veut répéter le film
      * @return le film répété
      */

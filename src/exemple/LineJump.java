@@ -10,6 +10,7 @@ public class LineJump implements Film {
     public LineJump(char content){
         this.content = content;
     }
+
     @Override
     public int hauteur() {
         return 5;

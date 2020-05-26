@@ -4,6 +4,8 @@ import film.Film;
 import film.Films;
 import editing.*;
 
+import java.io.FileNotFoundException;
+
 /**
  * Un exemple basique d'implémentation de l'interface Film.
  */
@@ -49,17 +51,12 @@ public class LaDiagonaleDuFou implements Film {
         repeat = Editing.inlay(film, repeat, 54, 5);
         repeat = Editing.frameAMovie(repeat);
         Films.projeter(repeat);
-//        Films.projeter(film);
-//        Film films = InlayFilm.inlay(film, filmTest, 22, 5);
-//        Film pasteTwoFilm = Editing.paste(film, filmTest);
-//        Films.projeter(pasteTwoFilm);
-//        Films.projeter(film);
-//        films.rembobiner();
-        /*try {
-            Films.sauvegarder(films, "test.txt");
-//            Films.sauvegarder(trailer, "fou.txt");
+        repeat.rembobiner();
+
+        try {
+            Films.sauvegarder(repeat, "test.txt");
         } catch (FileNotFoundException e) {
             System.err.println("Le fichier 'fou.txt' n'a pas pu être créé.");
-        }*/
+        }
     }
 }

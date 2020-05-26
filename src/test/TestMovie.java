@@ -4,7 +4,6 @@ import film.Film;
 import film.Films;
 
 public class TestMovie {
-    private static int nbFrame = 0;
 
     public TestMovie() {}
 
@@ -26,6 +25,12 @@ public class TestMovie {
         return sb.toString();
     }
 
+    /**
+     * Retourne le nombre d'images attendu d'un film
+     * @param f Le film
+     * @param expected nombre d'images attendues
+     * @return un int
+     */
     public static int nbFrame(Film f, int expected) {
         int i = 0;
         char[][] frame = Films.getEcran(f);
@@ -35,6 +40,11 @@ public class TestMovie {
         return i;
     }
 
+    /**
+     * Retourne le nombre d'images d'un film
+     * @param f Le film
+     * @return nombre d'images
+     */
     public static int nbFrame(Film f) {
         int i = 0;
         char[][] frame = Films.getEcran(f);
