@@ -50,6 +50,7 @@ public class RepeatFilmTest extends TestMovie {
         testRepeatFilm(new LaDiagonaleDuFou(), 5);
     }
 
+    // test lors d'une entrée de nbRep < 0
     private void testnbRepNegative(){
         testRepeatFilm(new LaDiagonaleDuFou(), -5);
     }

@@ -18,7 +18,7 @@ public class PasteTwoFilmTest extends TestMovie {
 
         Film diagonal = new LaDiagonaleDuFou();
         Film line = new Line();
-        Film lineJump = new LineJump();
+        Film lineJump = new LineJump('s');
         Film emptyMovie = new EmptyMovie();
 
         // test normal

@@ -7,8 +7,18 @@ public class RealTrailer implements Film {
     private static int NB_IMAGES = 20;
 
     public RealTrailer(int start, int end){
+        if(end > NB_IMAGES)
+            NB_IMAGES = 20;
+        if(end < 0) {
+            end = 0;
+            NB_IMAGES = end;
+        }
+        if(end != 0 && end <= NB_IMAGES)
+            NB_IMAGES = end+1;
+        if(end == 0)
+            NB_IMAGES = end;
         num+= start;
-        NB_IMAGES = end+1;
+
     }
 
     @Override

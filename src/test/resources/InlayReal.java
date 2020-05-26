@@ -14,8 +14,10 @@ public class InlayReal implements Film {
     public InlayReal(Film f, Film toInlay, int r, int c){
         this.original = f;
         this.toInlay = toInlay;
-        this.row = r-1;
-        this.column = c-1;
+        if(r < 0 && c < 0)
+            r=0; c=0;
+        this.row = r;
+        this.column = c;
     }
 
     @Override
@@ -34,13 +36,14 @@ public class InlayReal implements Film {
             char[][] display = new char[toInlay.hauteur()][toInlay.largeur()];
             if (num >= row / original.hauteur()  && toInlay.suivante(display)) {
                 for (int i = 0; row < original.hauteur(); ++row) {
+                    int tempCol = column;
                     for (int j = 0; column < original.largeur(); ++column) {
                         if (!(row > display.length && column > display[0].length)) {
                             écran[row][column] = display[i][j];
                         }
                         ++j;
                     }
-                    column = 0;
+                    column = tempCol;
                     ++i;
                 }
                 ++num;

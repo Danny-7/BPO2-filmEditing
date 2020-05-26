@@ -18,7 +18,6 @@ public class TestMovie {
         StringBuilder sb = new StringBuilder("");
         char[][] display = Films.getEcran(f);
         while(f.suivante(display)){
-            ++nbFrame;
             // ajout de chaque image dans le builder de la chaine  de caractères
             sb.append(Films.toString(display)+ "\n");
             Films.effacer(display);
@@ -45,13 +44,4 @@ public class TestMovie {
         return i;
     }
 
-
-    /**
-     * Obtient le nombre d'images du film représenter
-     *
-     * @return un entier
-     */
-    public static int getNbFrames(){
-       return nbFrame;
-    }
 }
