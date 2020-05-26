@@ -21,9 +21,30 @@ public class TestMovie {
             ++nbFrame;
             // ajout de chaque image dans le builder de la chaine  de caractères
             sb.append(Films.toString(display)+ "\n");
+            Films.effacer(display);
         }
+        f.rembobiner();
         return sb.toString();
     }
+
+    public static int nbFrame(Film f, int expected) {
+        int i = 0;
+        char[][] frame = Films.getEcran(f);
+        while (i <= expected && f.suivante(frame))
+            ++i;
+        f.rembobiner();
+        return i;
+    }
+
+    public static int nbFrame(Film f) {
+        int i = 0;
+        char[][] frame = Films.getEcran(f);
+        while (f.suivante(frame))
+            ++i;
+        f.rembobiner();
+        return i;
+    }
+
 
     /**
      * Obtient le nombre d'images du film représenter

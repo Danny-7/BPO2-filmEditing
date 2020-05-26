@@ -3,7 +3,7 @@ package test.inlaidFilm;
 import editing.Editing;
 import editing.Movie;
 import exemple.LaDiagonaleDuFou;
-import exemple.Ligne;
+import exemple.Line;
 import film.Film;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -15,7 +15,7 @@ public class InlaidTest extends TestMovie {
     @Test
     public void test(){
         Film f = new Movie(new LaDiagonaleDuFou());
-        Film f2 = new Movie(new Ligne());
+        Film f2 = new Movie(new Line());
         Film f3 = new InlayReal(f,f2,5,4);
 
         Film toTest = Editing.inlay(f,f2,5,4);

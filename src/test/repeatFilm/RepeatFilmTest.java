@@ -1,6 +1,8 @@
 package test.repeatFilm;
 
 import exemple.LaDiagonaleDuFou;
+import exemple.Line;
+import exemple.LineJump;
 import film.Film;
 import editing.Editing;
 import editing.Movie;
@@ -19,30 +21,43 @@ public class RepeatFilmTest extends TestMovie {
      *
      * @param nbRep nombre de répétitions
      */
-    private void testRepeatFilm(int nbRep){
-        Film f = new Movie(new RealMovie(nbRep));
+    private void testRepeatFilm(Film f, int nbRep){
+        if(nbRep < 0)
+            nbRep = 0;
+        Film film = new RealMovie(nbRep);
 
-        Film filmToTest = new Movie(new LaDiagonaleDuFou());
-        filmToTest = Editing.repeat(filmToTest, nbRep);
+        Film film1 = f;
+        Film filmToTest = Editing.repeat(film1, nbRep);
         String filmToTestString = toString(filmToTest);
-        String film = toString(f);
+        String filmString = toString(film);
+
+        int nbFrame = nbFrame(film1);
+        assertEquals(nbFrame*nbRep, nbFrame(filmToTest,nbFrame*nbRep));
+
+        assertTrue(film1.hauteur() == filmToTest.hauteur());
+        assertTrue(film1.largeur() == filmToTest.largeur());
 
         // test si le film répéter est celui attendu
-        assertEquals(film, filmToTestString);
+        assertEquals(filmString, filmToTestString);
     }
     // test lors d'une entrée de nbRep <= 0
     private void testEmptyRepeatFilm(){
-        testRepeatFilm(0);
+        testRepeatFilm(new LaDiagonaleDuFou(), 0);
     }
 
     // test lors d'une entrée de nbRep > 0
     private void testTrueRepeatFilm(){
-        testRepeatFilm(5);
+        testRepeatFilm(new LaDiagonaleDuFou(), 5);
+    }
+
+    private void testnbRepNegative(){
+        testRepeatFilm(new LaDiagonaleDuFou(), -5);
     }
 
     @Test
     public void test(){
         testTrueRepeatFilm();
         testEmptyRepeatFilm();
+        testnbRepNegative();
     }
 }

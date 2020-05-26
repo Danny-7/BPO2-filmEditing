@@ -33,5 +33,7 @@ public class FilmExpectedtoPaste implements Film {
 
     @Override
     public void rembobiner() {
+        f.rembobiner();
+        f2.rembobiner();
     }
 }
